@@ -45,18 +45,21 @@ export const getVehicles = async ({
       totalBooking: parseInt(response.data.bike?.total_bookings),
     };
   }
-  const totalBookingSum = response.data.bikes.reduce((acc: number, bike: VehicleType) => {
-    return acc + parseInt(bike?.total_bookings);
-  }, 0);
+  let totalBookingSum = 0;
+  response.data.bikes.forEach((bike: VehicleType) => {
+    if (bike.total_bookings) totalBookingSum += parseInt(bike.total_bookings);
+  });
   return {
     vehicles: response.data.bikes,
     ttl: response.ttl,
-    totalBooking: totalBookingSum || 0,
+    totalBooking: totalBookingSum,
   };
 };
 
 export const getVehicleById = async (bikeId: string): Promise<ResponseType> => {
-  const rawResponse = await fetch(`${BASE_URL}/items?bike_id=${bikeId.toUpperCase()}`);
+  const rawResponse = await fetch(
+    `${BASE_URL}/items?bike_id=${bikeId.toUpperCase()}`
+  );
   const response = await rawResponse.json();
 
   return {

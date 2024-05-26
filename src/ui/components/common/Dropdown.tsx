@@ -12,27 +12,26 @@ type Props = {
 };
 const Dropdown: React.FC<Props> = ({ options, value, placeholder }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const router = useRouter();
 
   return (
-    <div className="flex items-center ">
-      <div className="relative group min-w-[170px]">
+    <div className='flex items-center '>
+      <div className='group relative min-w-[170px]'>
         <button
-          className="inline-flex justify-between w-full px-4 py-2 text-sm  text-gray-700 border-2 border-gray-300 bg-white rounded-lg"
+          className='inline-flex w-full justify-between rounded-lg border-2 border-gray-300  bg-white px-4 py-2 text-sm text-gray-700'
           onClick={() => setIsOpen(!isOpen)}
         >
-          <span className="mr-2 capitalize">{value ? value : placeholder}</span>
-          <Image src="/assets/chevron.svg" width={20} height={20} alt={''} />
+          <span className='mr-2 capitalize'>{value ? value : placeholder}</span>
+          <Image src='/assets/chevron.svg' width={20} height={20} alt={''} />
         </button>
         <div
           className={`${
             isOpen ? 'block' : 'hidden'
-          } w-full absolute right-0 mt-1 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 p-1 space-y-1`}
+          } absolute right-0 mt-1 w-full space-y-1 rounded-md bg-white p-1 shadow-lg ring-1 ring-black ring-opacity-5`}
         >
           {options.map((option) => (
             <Link
               key={option}
-              className="pointer block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md capitalize"
+              className='pointer block cursor-pointer rounded-md px-4 py-2 capitalize text-gray-700 hover:bg-gray-100 active:bg-blue-100'
               onClick={() => {
                 setIsOpen(false);
               }}

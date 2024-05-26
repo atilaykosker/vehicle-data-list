@@ -22,53 +22,60 @@ const VehicleModal = ({
   const vehicle = vehicles[0];
   return (
     <Modal>
-      <button className="w-full text-end font-bold text-lg text-slate-500" onClick={onClose}>
+      <button
+        className='w-full text-end text-lg font-bold text-slate-500'
+        onClick={onClose}
+      >
         X
       </button>
-      <div className="flex items-center justify-center">
-        <div className="overflow-x-auto">
-          <table className="w-full max-w-4xl mx-auto overflow-hidden divide-y bg-white shadow-md rounded-lg">
+      <div className='flex items-center justify-center'>
+        <div className='overflow-x-auto'>
+          <table className='mx-auto w-full max-w-4xl divide-y overflow-hidden rounded-lg bg-white shadow-md'>
             <tbody>
-              <tr className="bg-blue-gray-100 text-gray-700">
-                <th className="py-3 px-4 text-left">ID</th>
-                <td className="py-3 px-4">{vehicle.bike_id}</td>
+              <tr className='bg-blue-gray-100 text-gray-700'>
+                <th className='px-4 py-3 text-left'>ID</th>
+                <td className='px-4 py-3'>{vehicle.bike_id}</td>
               </tr>
-              <tr className="bg-blue-gray-100 text-gray-700">
-                <th className="py-3 px-4 text-left">Latitude</th>
-                <td className="py-3 px-4">{vehicle.lat}</td>
+              <tr className='bg-blue-gray-100 text-gray-700'>
+                <th className='px-4 py-3 text-left'>Latitude</th>
+                <td className='px-4 py-3'>{vehicle.lat}</td>
               </tr>
-              <tr className="bg-blue-gray-100 text-gray-700">
-                <th className="py-3 px-4 text-left">Longitude</th>
-                <td className="py-3 px-4">{vehicle.lon}</td>
+              <tr className='bg-blue-gray-100 text-gray-700'>
+                <th className='px-4 py-3 text-left'>Longitude</th>
+                <td className='px-4 py-3'>{vehicle.lon}</td>
               </tr>
-              <tr className="bg-blue-gray-100 text-gray-700">
-                <th className="py-3 px-4 text-left">Reserved</th>
-                <td className="py-3 px-4">{Boolean(vehicle.is_reserved) ? 'Yes' : 'No'}</td>
+              <tr className='bg-blue-gray-100 text-gray-700'>
+                <th className='px-4 py-3 text-left'>Reserved</th>
+                <td className='px-4 py-3'>
+                  {Boolean(vehicle.is_reserved) ? 'Yes' : 'No'}
+                </td>
               </tr>
-              <tr className="bg-blue-gray-100 text-gray-700">
-                <th className="py-3 px-4 text-left">Disabled</th>
-                <td className="py-3 px-4">{Boolean(vehicle.is_disabled) ? 'Yes' : 'No'}</td>
+              <tr className='bg-blue-gray-100 text-gray-700'>
+                <th className='px-4 py-3 text-left'>Disabled</th>
+                <td className='px-4 py-3'>
+                  {Boolean(vehicle.is_disabled) ? 'Yes' : 'No'}
+                </td>
               </tr>
-              <tr className="bg-blue-gray-100 text-gray-700">
-                <th className="py-3 px-4 text-left">Vehicle Type</th>
-                <td className="py-3 px-4 capitalize">{vehicle.vehicle_type}</td>
+              <tr className='bg-blue-gray-100 text-gray-700'>
+                <th className='px-4 py-3 text-left'>Vehicle Type</th>
+                <td className='px-4 py-3 capitalize'>{vehicle.vehicle_type}</td>
               </tr>
-              <tr className="bg-blue-gray-100 text-gray-700">
-                <th className="py-3 px-4 text-left">Total Bookings</th>
-                <td className="py-3 px-4">{vehicle.total_bookings}</td>
+              <tr className='bg-blue-gray-100 text-gray-700'>
+                <th className='px-4 py-3 text-left'>Total Bookings</th>
+                <td className='px-4 py-3'>{vehicle.total_bookings}</td>
               </tr>
-              <tr className="bg-blue-gray-100 text-gray-700">
-                <th className="py-3 px-4 text-left">Android</th>
-                <td className="py-3 px-4 text-sky-500">
-                  <Link target="_blank" href={vehicle.android}>
+              <tr className='bg-blue-gray-100 text-gray-700'>
+                <th className='px-4 py-3 text-left'>Android</th>
+                <td className='px-4 py-3 text-sky-500'>
+                  <Link target='_blank' href={vehicle.android}>
                     Click Here
                   </Link>
                 </td>
               </tr>
-              <tr className="bg-blue-gray-100 text-gray-700">
-                <th className="py-3 px-4 text-left">Ios</th>
-                <td className="py-3 px-4 text-sky-500">
-                  <Link target="_blank" href={vehicle.ios}>
+              <tr className='bg-blue-gray-100 text-gray-700'>
+                <th className='px-4 py-3 text-left'>Ios</th>
+                <td className='px-4 py-3 text-sky-500'>
+                  <Link target='_blank' href={vehicle.ios}>
                     Click Here
                   </Link>
                 </td>

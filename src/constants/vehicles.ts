@@ -1,3 +1,3 @@
-import { VehicleOptionType } from "@/services/vehicleService";
+import { VehicleOptionType } from '@/services/vehicleService';
 
 export const VEHICLE_OPTIONS: VehicleOptionType[] = ['bike', 'scooter'];

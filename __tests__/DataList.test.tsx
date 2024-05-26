@@ -19,11 +19,23 @@ describe('DataList', () => {
 
   it('should call the renderItem function for each item', () => {
     const renderItemMock = jest.fn();
-    render(<DataList data={dataListMock} renderItem={renderItemMock} keyExtractor={(item) => item.bike_id} />);
+    render(
+      <DataList
+        data={dataListMock}
+        renderItem={renderItemMock}
+        keyExtractor={(item) => item.bike_id}
+      />
+    );
     expect(renderItemMock).toHaveBeenCalledTimes(dataListMock.length);
   });
   it('should render correctly with no data', () => {
-    render(<DataList data={[]} renderItem={(item) => <div>{item}</div>} keyExtractor={(item) => item} />);
+    render(
+      <DataList
+        data={[]}
+        renderItem={(item) => <div>{item}</div>}
+        keyExtractor={(item) => item}
+      />
+    );
     expect(screen.queryByText('123')).not.toBeInTheDocument();
   });
 });

@@ -19,13 +19,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang='en'>
       <body className={inter.className}>
         <ReactQueryProvider>
-          <main className="flex min-h-screen flex-col items-center justify-between p-4">
+          <main className='flex min-h-screen flex-col items-center justify-between p-4'>
             <Suspense>{children}</Suspense>
           </main>
-          <div id="modal-root"></div>
+          <div id='modal-root'></div>
         </ReactQueryProvider>
       </body>
     </html>

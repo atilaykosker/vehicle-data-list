@@ -1,17 +1,29 @@
 import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 
-import { getVehicleById, getVehicles, VehicleServiceParametersType } from '@/services/vehicleService';
+import {
+  getVehicleById,
+  getVehicles,
+  VehicleServiceParametersType,
+} from '@/services/vehicleService';
 
 type Props = VehicleServiceParametersType & {
   vehicleId?: string | null;
 };
 
-const useVehicles = ({ page = 1, vehicleType = null, search = null, vehicleId = null }: Props) => {
+const useVehicles = ({
+  page = 1,
+  vehicleType = null,
+  search = null,
+  vehicleId = null,
+}: Props) => {
   const [ttl, setTtl] = useState<number | null>(null);
   const { isLoading, isError, data, error, refetch } = useQuery({
     queryKey: ['vehicles', page, vehicleType, search, vehicleId],
-    queryFn: () => (vehicleId ? getVehicleById(vehicleId) : getVehicles({ page, vehicleType, search })),
+    queryFn: () =>
+      vehicleId
+        ? getVehicleById(vehicleId)
+        : getVehicles({ page, vehicleType, search }),
   });
 
   useEffect(() => {
@@ -31,7 +43,7 @@ const useVehicles = ({ page = 1, vehicleType = null, search = null, vehicleId = 
 
   return {
     vehicles: data?.vehicles || [],
-    totalBooking: data?.totalBooking || 0,
+    totalBooking: data?.totalBooking,
     isLoading,
     isError,
     error,

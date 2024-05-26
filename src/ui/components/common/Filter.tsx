@@ -13,15 +13,22 @@ type Props = {
 const Filter: React.FC<Props> = ({ selected, options }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [debouncedSearch, search, setSearch] = useDebounce<string | null>(searchParams.get('search'), 1000);
+  const [debouncedSearch, search, setSearch] = useDebounce<string | null>(
+    searchParams.get('search'),
+    1000
+  );
   useEffect(() => {
     const newUrl = createUrlWithNewParam({ search: debouncedSearch });
     router.push(newUrl);
   }, [debouncedSearch]);
   return (
-    <div className="flex flex-col sm:flex-row items-center">
+    <div className='flex flex-col items-center gap-4  sm:flex-row sm:items-start'>
       <SearchBox onChange={setSearch} value={search} />
-      <Dropdown options={[...options, null]} placeholder="Filter By Vehicle" value={selected} />
+      <Dropdown
+        options={[...options, null]}
+        placeholder='Filter By Vehicle'
+        value={selected}
+      />
     </div>
   );
 };

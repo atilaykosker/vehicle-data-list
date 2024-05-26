@@ -9,7 +9,14 @@ jest.mock('next/navigation', () => ({
 
 jest.mock('next/link', () => {
   // eslint-disable-next-line react/display-name
-  return ({ children, href }: { children: React.ReactNode; href: string; as: string }) => {
+  return ({
+    children,
+    href,
+  }: {
+    children: React.ReactNode;
+    href: string;
+    as: string;
+  }) => {
     return <a href={href}>{children}</a>;
   };
 });
@@ -24,13 +31,25 @@ describe('Dropdown', () => {
     });
   });
   it('should render correctly', () => {
-    render(<Dropdown options={['Option 1', 'Option 2']} value={null} placeholder={''} />);
+    render(
+      <Dropdown
+        options={['Option 1', 'Option 2']}
+        value={null}
+        placeholder={''}
+      />
+    );
     expect(screen.getByText('Option 1')).toBeInTheDocument();
     expect(screen.getByText('Option 2')).toBeInTheDocument();
   });
 
   it('should render links with correct href and as', () => {
-    render(<Dropdown options={['Option 1', 'Option 2']} value={null} placeholder={''} />);
+    render(
+      <Dropdown
+        options={['Option 1', 'Option 2']}
+        value={null}
+        placeholder={''}
+      />
+    );
     expect(screen.getByText('Option 1')).toHaveAttribute('href');
   });
 });

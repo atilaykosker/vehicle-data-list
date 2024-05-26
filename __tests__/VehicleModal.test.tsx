@@ -45,8 +45,12 @@ describe('VehicleModal', () => {
     expect(screen.getByText('123')).toBeInTheDocument();
     expect(screen.getByText(vehicleMockScooter.lat)).toBeInTheDocument();
     expect(screen.getByText(vehicleMockScooter.lon)).toBeInTheDocument();
-    expect(screen.getByText(vehicleMockScooter.vehicle_type)).toBeInTheDocument();
-    expect(screen.getByText(vehicleMockScooter.total_bookings)).toBeInTheDocument();
+    expect(
+      screen.getByText(vehicleMockScooter.vehicle_type)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(vehicleMockScooter.total_bookings)
+    ).toBeInTheDocument();
   });
   it('should render the vehicle modal with loading state', () => {
     const queryClient = new QueryClient();
@@ -73,7 +77,13 @@ describe('VehicleModal', () => {
         <VehicleModal isOpened={true} vehicleId={'123'} onClose={() => {}} />
       </QueryClientProvider>
     );
-    expect(screen.getAllByText('Click Here')[0]).toHaveAttribute('href', vehicleMockScooter.android);
-    expect(screen.getAllByText('Click Here')[1]).toHaveAttribute('href', vehicleMockScooter.ios);
+    expect(screen.getAllByText('Click Here')[0]).toHaveAttribute(
+      'href',
+      vehicleMockScooter.android
+    );
+    expect(screen.getAllByText('Click Here')[1]).toHaveAttribute(
+      'href',
+      vehicleMockScooter.ios
+    );
   });
 });
