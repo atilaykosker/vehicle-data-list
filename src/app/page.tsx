@@ -1,17 +1,17 @@
 'use client';
 import { useState } from 'react';
 
-import { VEHICLE_OPTIONS, VehicleOption } from '@/constants/vehicles';
+import { VEHICLE_OPTIONS } from '@/constants/vehicles';
 import useDebounce from '@/hooks/useDebounce';
 import useVehicles from '@/hooks/useVehicle';
-import { Vehicle } from '@/services/vehicleService';
+import { VehicleOptionType, VehicleType } from '@/services/vehicleService';
 import { DataList, Filter, Pagination } from '@/ui/components/common';
 import { VehicleItem, VehicleModal } from '@/ui/components/Vehicle';
 
 export default function Home() {
   const [page, setPage] = useState<number>(1);
   const [debouncedSearch, search, setSearch] = useDebounce<string>('', 1000);
-  const [selectedVehicleType, setSelectedVehicleType] = useState<VehicleOption | null>(null);
+  const [selectedVehicleType, setSelectedVehicleType] = useState<VehicleOptionType | null>(null);
   const [vehicleId, setVehicleId] = useState<string | null>(null);
   const [isOpened, setIsOpened] = useState<boolean>(false);
 
@@ -45,7 +45,7 @@ export default function Home() {
         {isPending && <span>Loading...</span>}
         {isError && <span>Error: {error?.message}</span>}
       </div>
-      <DataList<Vehicle>
+      <DataList<VehicleType>
         data={vehicles}
         keyExtractor={(item) => item.bike_id}
         renderItem={(item) => <VehicleItem vehicle={item} detailAction={displayDetail} />}

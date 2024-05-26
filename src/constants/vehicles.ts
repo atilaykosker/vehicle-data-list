@@ -1,3 +1,3 @@
-export type VehicleOption = 'bike' | 'scooter';
+import { VehicleOptionType } from "@/services/vehicleService";
 
-export const VEHICLE_OPTIONS: VehicleOption[] = ['bike', 'scooter'];
+export const VEHICLE_OPTIONS: VehicleOptionType[] = ['bike', 'scooter'];

@@ -1,8 +1,8 @@
 import Image from 'next/image';
 
-import { Vehicle } from '@/services/vehicleService';
+import { VehicleType } from '@/services/vehicleService';
 
-const VehicleItem = ({ vehicle, detailAction }: { vehicle: Vehicle; detailAction: (bikeId: string) => void }) => {
+const VehicleItem = ({ vehicle, detailAction }: { vehicle: VehicleType; detailAction: (bikeId: string) => void }) => {
   return (
     <li className="flex justify-between gap-x-6 py-5 items-center">
       <div className="flex min-w-0 gap-x-4">
