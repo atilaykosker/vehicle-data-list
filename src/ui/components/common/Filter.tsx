@@ -12,10 +12,9 @@ type Props = {
 };
 const Filter: React.FC<Props> = ({ selected, options }) => {
   const router = useRouter();
-
-  const [debouncedSearch, search, setSearch] = useDebounce<string>('', 1000);
+  const searchParams = useSearchParams();
+  const [debouncedSearch, search, setSearch] = useDebounce<string | null>(searchParams.get('search'), 1000);
   useEffect(() => {
-    if (!debouncedSearch) return;
     const newUrl = createUrlWithNewParam({ search: debouncedSearch });
     router.push(newUrl);
   }, [debouncedSearch]);
