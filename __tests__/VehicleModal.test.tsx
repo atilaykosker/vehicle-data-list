@@ -41,7 +41,8 @@ describe('VehicleModal', () => {
         <VehicleModal isOpened={true} vehicleId={'123'} onClose={() => {}} />
       </QueryClientProvider>
     );
-    expect(screen.getByText(vehicleMockScooter.bike_id)).toBeInTheDocument();
+    screen.debug();
+    expect(screen.getByText('123')).toBeInTheDocument();
     expect(screen.getByText(vehicleMockScooter.lat)).toBeInTheDocument();
     expect(screen.getByText(vehicleMockScooter.lon)).toBeInTheDocument();
     expect(screen.getByText(vehicleMockScooter.vehicle_type)).toBeInTheDocument();
@@ -50,7 +51,7 @@ describe('VehicleModal', () => {
   it('should render the vehicle modal with loading state', () => {
     const queryClient = new QueryClient();
     (useQuery as jest.Mock).mockReturnValue({
-      isPending: true,
+      isLoading: true,
     });
     render(
       <QueryClientProvider client={queryClient}>

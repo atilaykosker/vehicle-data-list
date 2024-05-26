@@ -20,11 +20,10 @@ describe('VehicleList', () => {
     screen.getByText('Display More').click();
     expect(detailActionMock).toHaveBeenCalledTimes(1);
   });
-    it('should call the detailAction function with the correct bikeId', () => {
-        const detailActionMock = jest.fn();
-        render(<VehicleItem vehicle={vehicleMockBike} detailAction={detailActionMock} />);
-        screen.getByText('Display More').click();
-        expect(detailActionMock).toHaveBeenCalledWith('1235');
-    });
-    
+  it('should call the detailAction function with the correct bikeId', () => {
+    const detailActionMock = jest.fn();
+    render(<VehicleItem vehicle={vehicleMockBike} detailAction={detailActionMock} />);
+    screen.getByText('Display More').click();
+    expect(detailActionMock).toHaveBeenCalledWith('1235');
+  });
 });
