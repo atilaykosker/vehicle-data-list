@@ -3,10 +3,10 @@ import { useState } from 'react';
 
 import { VEHICLE_OPTIONS } from '@/constants/vehicles';
 import useDebounce from '@/hooks/useDebounce';
-import useVehicles from '@/hooks/useVehicle';
+import useVehicles from '@/hooks/useVehicles';
 import { VehicleOptionType, VehicleType } from '@/services/vehicleService';
 import { DataList, Filter, Pagination } from '@/ui/components/common';
-import { VehicleItem, VehicleModal } from '@/ui/components/Vehicle';
+import { VehicleItem, VehicleModal } from '@/ui/components/vehicle';
 
 export default function Home() {
   const [page, setPage] = useState<number>(1);
