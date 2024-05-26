@@ -1,18 +1,28 @@
 'use client';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useEffect } from 'react';
+
+import { createUrlWithNewParam } from '@/helpers/createUrlWithQuery';
+import useDebounce from '@/hooks/useDebounce';
 import { Dropdown, SearchBox } from '@/ui/components/common';
 
 type Props = {
-  setSearch: React.Dispatch<string>;
-  search: string;
   selected: string | null;
-  setSelected: React.Dispatch<React.SetStateAction<string | null>>;
   options: string[];
 };
-const Filter: React.FC<Props> = ({ setSearch, search, selected, setSelected, options }) => {
+const Filter: React.FC<Props> = ({ selected, options }) => {
+  const router = useRouter();
+
+  const [debouncedSearch, search, setSearch] = useDebounce<string>('', 1000);
+  useEffect(() => {
+    if (!debouncedSearch) return;
+    const newUrl = createUrlWithNewParam({ search: debouncedSearch });
+    router.push(newUrl);
+  }, [debouncedSearch]);
   return (
     <div className="flex flex-col sm:flex-row items-center">
       <SearchBox onChange={setSearch} value={search} />
-      <Dropdown options={[...options, null]} placeholder="Filter By Vehicle" value={selected} onChange={setSelected} />
+      <Dropdown options={[...options, null]} placeholder="Filter By Vehicle" value={selected} />
     </div>
   );
 };

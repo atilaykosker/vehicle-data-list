@@ -33,7 +33,7 @@ export const getVehicles = async ({
 }: VehicleServiceParametersType): Promise<ResponseType> => {
   const rawResponse = await fetch(
     `${BASE_URL}/items?${`page=${page}`}${vehicleType ? `&vehicle_type=${vehicleType}` : ''}${
-      search ? `&bike_id=${search}` : ''
+      search ? `&bike_id=${search.toUpperCase()}` : ''
     }`
   );
   const response = await rawResponse.json();
@@ -42,11 +42,11 @@ export const getVehicles = async ({
     return {
       vehicles: response.data.bike && [response.data.bike],
       ttl: response.ttl,
-      totalBooking: parseInt(response.data.bike.total_bookings),
+      totalBooking: parseInt(response.data.bike?.total_bookings),
     };
   }
   const totalBookingSum = response.data.bikes.reduce((acc: number, bike: VehicleType) => {
-    return acc + parseInt(bike.total_bookings);
+    return acc + parseInt(bike?.total_bookings);
   }, 0);
   return {
     vehicles: response.data.bikes,
@@ -56,12 +56,12 @@ export const getVehicles = async ({
 };
 
 export const getVehicleById = async (bikeId: string): Promise<ResponseType> => {
-  const rawResponse = await fetch(`${BASE_URL}/items?bike_id=${bikeId}`);
+  const rawResponse = await fetch(`${BASE_URL}/items?bike_id=${bikeId.toUpperCase()}`);
   const response = await rawResponse.json();
 
   return {
     vehicles: [response.data.bike],
     ttl: response.ttl,
-    totalBooking: parseInt(response.data.bike.total_bookings),
+    totalBooking: parseInt(response.data.bike.total_bookings) || 0,
   };
 };

@@ -13,11 +13,11 @@ const VehicleModal = ({
   vehicleId: string;
   onClose: () => void;
 }) => {
-  const { isPending, isError, vehicles, error } = useVehicles({
+  const { isLoading, isError, vehicles, error } = useVehicles({
     vehicleId,
   });
   if (!isOpened) return null;
-  if (isPending) return <Modal>Loading...</Modal>;
+  if (isLoading) return <Modal>Loading...</Modal>;
   if (isError) return <Modal>Error: {error?.message}</Modal>;
   const vehicle = vehicles[0];
   return (

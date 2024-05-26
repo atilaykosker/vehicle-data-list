@@ -1,13 +1,15 @@
 'use client';
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 type Props = {
   value?: string;
+  initialValue?: string | null;
   onChange: (value: string) => void;
 };
 
 const SearchBox: React.FC<Props> = ({ onChange, value }) => {
+
   return (
     <div className="relative mx-auto text-gray-600">
       <input
